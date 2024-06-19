@@ -5,18 +5,18 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "musicas")
 public class Musica {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String titulo;
-
     @ManyToOne
-    @JoinColumn(name = "artista_id")
     private Artista artista;
 
-    // Getters e Setters
+    public Musica() {}
+    public Musica(String nomeMusica) {
+        this.titulo = nomeMusica;
+    }
 
     public Long getId() {
         return id;
@@ -44,10 +44,8 @@ public class Musica {
 
     @Override
     public String toString() {
-        return "Musica{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", artista=" + artista +
-                '}';
+        return
+                "Música='" + titulo + '\'' +
+                        ", artista=" + artista.getNome();
     }
 }
